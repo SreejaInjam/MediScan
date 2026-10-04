@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediScan - Smart Medicine Information</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .hero-pattern {
+            background-color: #f0fdf4;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50,50 m-40,0 a40,40 0 1,0 80,0 a40,40 0 1,0 -80,0' fill='none' stroke='%2322c55e' stroke-width='1' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 50px 50px;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .scale-on-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scale-on-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(34, 197, 94, 0.25);
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pill-shape {
+            position: absolute;
+            width: 300px;
+            height: 600px;
+            border-radius: 150px;
+            background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+            transform: rotate(-45deg);
+            z-index: -1;
+        }
+
+        .scan-button::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 9999px;
+            background: #22c55e;
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen hero-pattern overflow-x-hidden">
+    <!-- Background Decorative Elements -->
+    <div class="pill-shape top-20 left-[-150px]"></div>
+    <div class="pill-shape bottom-20 right-[-150px]"></div>
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-20 text-center relative">
+        <!-- Logo Section with enhanced animation -->
+        <div class="mb-8 float-animation relative">
+            <div class="absolute inset-0 bg-green-100 rounded-full filter blur-xl opacity-50 transform scale-150"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto relative z-10">
+                <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+                <path d="m8.5 8.5 7 7"/>
+            </svg>
+        </div>
+
+        <!-- Title with gradient effect -->
+        <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
+            MediScan
+        </h1>
+
+        <!-- Description in glass card -->
+        <div class="glass-effect max-w-2xl mx-auto rounded-2xl p-6 mb-12">
+            <p class="text-xl text-gray-700">
+                Scan your medicine QR code to instantly access detailed information 
+                and translations. Making medicine information clear and accessible.
+            </p>
+        </div>
+
+        <!-- Enhanced Scan Button -->
+        <button class="scan-button relative bg-green-500 hover:bg-green-600 text-white px-10 py-6 rounded-full text-xl font-semibold shadow-lg scale-on-hover inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3">
+                <rect width="5" height="5" x="3" y="3" rx="1"/>
+                <rect width="5" height="5" x="16" y="3" rx="1"/>
+                <rect width="5" height="5" x="3" y="16" rx="1"/>
+                <path d="M21 16h-3a2 2 0 0 0-2 2v3"/>
+                <path d="M21 21v.01"/>
+                <path d="M12 7v3a2 2 0 0 1-2 2H7"/>
+                <path d="M3 12h.01"/>
+                <path d="M12 3h.01"/>
+                <path d="M12 16v.01"/>
+                <path d="M16 12h1"/>
+                <path d="M21 12v.01"/>
+                <path d="M12 21v-1"/>
+            </svg>
+            Scan Medicine QR Code
+        </button>
+    </div>
+
+    <!-- Features Section with enhanced cards -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="feature-card glass-effect p-8 rounded-2xl shadow-lg">
+                <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 11H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Z"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4 text-green-600">Secure Information</h3>
+                <p class="text-gray-600">Access verified medicine information directly from our secure database.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card glass-effect p-8 rounded-2xl shadow-lg">
+                <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m5 8 6 6"/>
+                        <path d="m4 14 6-6 2-3"/>
+                        <path d="M2 5h12"/>
+                        <path d="M7 2h1"/>
+                        <path d="m22 22-5-10-5 10"/>
+                        <path d="M14 18h6"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4 text-green-600">Instant Translation</h3>
+                <p class="text-gray-600">Get medicine information in your preferred language instantly.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card glass-effect p-8 rounded-2xl shadow-lg">
+                <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                        <path d="M8 7h6"/>
+                        <path d="M8 11h8"/>
+                        <path d="M8 15h6"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4 text-green-600">Detailed Information</h3>
+                <p class="text-gray-600">Access complete details about usage, dosage, and precautions.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
